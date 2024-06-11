@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Post List</h1>
+<a href="{% url 'postapp:post_create' %}" class="btn btn-primary">작성하기</a>
+<ul>
+    {% for post in posts %}
+    <li>
+        <h2><a href="{% url 'postapp:post_detail' post_id=post.id %}">{{ post.title }}</a></h2>
+        <p>작성자: {{ post.author }}</p>
+        <p>작성일: {{ post.created_at|timesince }} 전</p>
+        {% if post.photos.exists %}
+            <img src="{{ post.photos.first.image.url }}" alt="First Photo">
+        {% else %}
+            <p>사진 없음</p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
