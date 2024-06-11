@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{% url 'postapp:post_list' %}">뒤로 가기</a>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="file" name="photos" multiple>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    // Submit 버튼 클릭 시 폼 초기화
+    document.getElementById('submitButton').addEventListener('click', function() {
+        document.getElementById('postForm').reset();
+    });
+</script>
+{% endblock %}
