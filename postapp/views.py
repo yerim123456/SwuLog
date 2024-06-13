@@ -54,3 +54,4 @@ def post_update(request, post_id):
     else:
         form = PostForm(instance=post)
     return render(request, 'postapp/post_update.html', {'form': form, 'post': post})
+

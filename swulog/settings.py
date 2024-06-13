@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accountapp',
     'postapp',
+    'searchapp',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +141,13 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+LOGIN_REDIRECT_URL = '/post/list'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+NAVER_CLIENT_ID = 'F_5iZp6rVY8JNiYXrH6b'
+NAVER_CLIENT_SECRET = 'XxIFKyivgk'

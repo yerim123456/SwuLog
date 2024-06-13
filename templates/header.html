@@ -14,4 +14,11 @@
             </form>
             {% endif %}
         </div>
+        <div style="text-align: right">
+            <form class="d-flex" action="{% url 'searchapp:api_search' %}" method="GET">
+                {% csrf_token %}
+                <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">🔍</button>
+            </form>
+        </div>
     </div>
