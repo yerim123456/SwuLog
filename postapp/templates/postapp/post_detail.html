@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<a href="{% url 'postapp:post_update' post_id=post.id %}">수정하기</a>
+{% if post.author == request.user %}
+    <a href="{% url 'postapp:post_delete' post_id=post.id %}">삭제하기</a>
+    <a href="{% url 'postapp:post_update' post_id=post.id %}">수정하기</a>
+{% endif %}
 <a href="{% url 'postapp:post_list' %}">뒤로 가기</a>
 <br>
 <h1>{{ post.title }}</h1>
@@ -11,7 +14,7 @@
 <p>폰트: {{ post.font }}</p>
 <p>작성일: {{ post.created_at }}</p>
 {% for photo in post.photos.all %}
-    <img src="{{ photo.image.url }}" alt="Photo">
+<img src="{{ photo.image.url }}" alt="Photo">
 {% endfor %}
 
 {% endblock %}
