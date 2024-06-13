@@ -10,12 +10,12 @@ from accountapp.models import CustomUser
 
 # Create your views here.
 def hello_world(request):
-    return render(request, 'accountapp/hello_world.html')
+    return render(request, 'postapp/post_list.html')
 
 class SignUpView(CreateView):
     model = CustomUser
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/create.html'
 
     def form_valid(self, form):

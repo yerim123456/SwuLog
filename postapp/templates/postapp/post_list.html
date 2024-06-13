@@ -8,6 +8,7 @@
     <li>
         <h2><a href="{% url 'postapp:post_detail' post_id=post.id %}">{{ post.title }}</a></h2>
         <p>작성자: {{ post.author }}</p>
+        <p>좋아요 수: {{ post.like_count }}</p>
         <p>작성일: {{ post.created_at|timesince }} 전</p>
         {% if post.photos.exists %}
             <img src="{{ post.photos.first.image.url }}" alt="First Photo">

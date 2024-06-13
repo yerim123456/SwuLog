@@ -1,0 +1,12 @@
+<body>
+    <h1 class="title">검색</h1>
+    <br>
+    <br>
+    <div class="editor-container">
+        <form class="" action="{% url 'api_search' %}" method="GET">
+            {% csrf_token %}
+            <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit"></button>
+        </form>
+    </div>
+</body>
