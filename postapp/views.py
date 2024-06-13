@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from .forms import PostForm
-from .models import Post, Photo
+from .models import Post, Photo, Like
 from django.contrib import messages
 
 
@@ -17,8 +17,8 @@ def post_create(request):
             post.author = request.user
             post.save()
             for file in request.FILES.getlist('photos'):
-                post.photos.create(image=file)
-        return redirect(reverse('postapp:post_detail', kwargs={'post_id': post.id}))
+                Photo.objects.create(post=post, image=file)
+            return redirect(reverse('postapp:post_detail', kwargs={'post_id': post.id}))
     else:
         form = PostForm()
     return render(request, 'postapp/post_create.html', {'form': form})
@@ -26,7 +26,10 @@ def post_create(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    return render(request, 'postapp/post_detail.html', {'post': post})
+    is_liked = False
+    if request.user.is_authenticated:
+        is_liked = Like.objects.filter(post=post, user=request.user).exists()
+    return render(request, 'postapp/post_detail.html', {'post': post, 'is_liked': is_liked})
 
 
 def post_list(request):
@@ -69,3 +72,12 @@ def post_delete(request, post_id):
     post.delete()
     messages.add_message(request, messages.SUCCESS, "게시물이 삭제되었습니다.")
     return redirect('postapp:post_list')
+
+
+@login_required
+def toggle_like(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    like, created = Like.objects.get_or_create(post=post, user=request.user)
+    if not created:
+        like.delete()
+    return redirect('postapp:post_detail', post_id=post.id)

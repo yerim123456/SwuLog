@@ -13,6 +13,23 @@
 <p>정렬: {{ post.alignment }}</p>
 <p>폰트: {{ post.font }}</p>
 <p>작성일: {{ post.created_at }}</p>
+<p>좋아요 수: {{ post.like_count }}</p>
+
+{% if user.is_authenticated %}
+    <form action="{% url 'postapp:toggle_like' post_id=post.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">
+            {% if is_liked %}
+                좋아요 취소
+            {% else %}
+                좋아요
+            {% endif %}
+        </button>
+    </form>
+{% else %}
+    <p>좋아요를 표시하려면 <a href="{% url 'accountapp:login' %}?next={{ request.path }}">로그인</a>하세요.</p>
+{% endif %}
+
 {% for photo in post.photos.all %}
 <img src="{{ photo.image.url }}" alt="Photo">
 {% endfor %}
