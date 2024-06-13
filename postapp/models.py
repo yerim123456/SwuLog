@@ -24,6 +24,9 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def like_count(self):
+        return self.likes.count()
+
 
 class Photo(models.Model):
     post = models.ForeignKey(Post, related_name='photos', on_delete=models.CASCADE)
@@ -31,3 +34,11 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.image.name
+
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('post', 'user')
