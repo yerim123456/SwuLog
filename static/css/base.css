@@ -1,0 +1,726 @@
+/* 기본 스타일 */
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+header {
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    color: #888;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #ffffff;
+}
+
+/* 로그인 화면 스타일 */
+.login-container {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    color: #A53134;
+    font-weight: 800;
+    font-size: 28px;
+    margin: 0;
+    padding: 118.5px 0 0 0;
+    text-align: center;
+}
+
+.login-container p {
+    margin-bottom: 40px;
+    color: #A0A0A2;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+}
+
+.login-container .input-group {
+    display: flex;
+    align-items: center;
+    margin: 0 20px 8px 20px;
+    position: relative;
+    border: 2px solid #D3D3D4;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.login-container .input-group label img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.login-container .input-group input {
+    width: calc(100% - 40px);
+    border: none;
+    background: none;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+}
+
+.login-container .input-group .toggle-password {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login-button {
+    width: 349px;
+    height: 49px;
+    padding: 10px;
+    background-color: #7E2528;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.login-button:hover {
+    background-color: #C74246;
+}
+
+.register-link {
+    display: block;
+    margin-top: 20px;
+    color: #7E2528;
+    text-decoration: none;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* 회원가입 화면 스타일 */
+.signup-container {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h1 {
+    color: #A53134;
+    font-weight: 800;
+    font-size: 21px;
+    text-align: left;
+    margin: 0;
+    padding: 58px 0 0 24px;
+}
+
+.signup-container p {
+    margin: 14px 30px 8px 0;
+    color: #A0A0A2;
+    font-weight: 300;
+    font-size: 13px;
+    text-align: right;
+}
+
+.signup-container span {
+    color: #868689;
+}
+
+.signup-container .terms-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+}
+
+.signup-container .required-text {
+    color: #A53134;
+    font-weight: 700; 
+}
+
+.signup-container .terms-label input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.signup-container .input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px 8px 20px;
+    position: relative;
+    border: 2px solid #D3D3D4;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.signup-container .input-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.signup-container .input-item:last-child {
+    border-bottom: none;
+}
+
+.signup-container .input-item label img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.signup-container .input-item input {
+    width: calc(100% - 30px);
+    border: none;
+    background: none;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+}
+
+.signup-container .input-item .toggle-password {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.signup-container .signup-button {
+    width: 349px;
+    height: 49px;
+    padding: 10px;
+    background-color: #7E2528;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    bottom: 63px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.signup-container .signup-button:hover {
+    background-color: #C74246;
+}
+
+.signup-container .input-item-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.signup-container .input-item-horizontal .radio-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.signup-container .input-item-horizontal .radio-group label {
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+.signup-container .input-item-horizontal:last-child {
+    border-bottom: none;
+}
+
+.signup-container .input-group label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+}
+
+.signup-container .input-group label input {
+    margin-right: 10px;
+    width: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+.signup-container .input-item-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.signup-container .button-group {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1;
+    margin: 0 5px; 
+}
+
+.signup-container .button-group .button {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: #888;
+    font-family: 'Pretendard', sans-serif;
+    border-right: 1px solid #ddd;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.signup-container .button-group .button:last-child {
+    border-right: none;
+}
+
+.signup-container .button-group .button:hover {
+    background-color: #f0f0f0;
+}
+
+.signup-container .button-group input[type="radio"]:checked + .button {
+    background-color: #EDEDED;
+    color: #868689;
+}
+
+.signup-container .terms-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.signup-container .terms-label input {
+    margin-right: 10px;
+}
+
+.signup-container .required-text {
+    color: #7E2528;
+    font-weight: 700;
+}
+
+/* 글 목록 화면 스타일 */
+.posts-container {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.posts-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.header-icons img {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.post-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.post-item {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-image {
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.post-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 3px;
+}
+
+.post-interactions {
+    font-size: 14px;
+    color: #888;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: -10px;
+}
+
+.like-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.posts-container {
+    width: 100%;
+    max-width: 390px;
+    height: calc(100vh - 82px); /* 전체 높이에서 bottom-bar 높이를 뺀 값으로 설정 */
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-sizing: border-box; /* 여백과 테두리를 포함한 전체 너비 설정 */
+}
+
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-icons img {
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.post-list {
+    display: block; /* flex에서 block으로 변경 */
+}
+
+.post-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.post-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.post-content {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.post-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    margin: 5px 0;
+}
+
+.post-interactions {
+    display: flex;
+    align-items: center;
+}
+
+.like-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 390px;
+    height: 82px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.floating-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.floating-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.popup {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    padding: 10px;
+}
+
+.popup-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.popup-link img {
+    width: 100%;
+    height: 100%;
+    margin-right: 5px;
+}
+
+/* 글 작성 페이지 */
+.post-create-container {
+    width: 100%;
+    max-width: 390px;
+    height: 844px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 여백과 테두리를 포함한 전체 너비 설정 */
+}
+
+.post-create-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-create-header .submit-button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-create-header .back-button {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.input-group {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.input-group input:focus, .input-group textarea:focus {
+    outline: none;
+}
+
+.bottom-toolbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.toolbar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.toolbar-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* 포스트 상세 스타일 */
+.post-detail-container {
+    width: 390px;
+    height: 844px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-detail-header {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.post-detail-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
+    color: black;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.post-actions .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007BFF;
+    border-radius: 5px;
+    color: #007BFF;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.post-actions .btn:hover {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.post-content {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.post-photo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}

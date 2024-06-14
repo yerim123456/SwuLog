@@ -1,24 +1,24 @@
-    <div>
-        <div style="text-align: center">
-            <h1>SwuLog</h1>
-        </div>
-        <div style="text-align: center">
-            {% if not user.is_authenticated %}
-            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-                <span>login</span>
-            </a>
-            {% else %}
-            <form action="{% url 'accountapp:logout' %}?next={{ request.path }}" method="post" class="swulog_header_nav"> {# 장고 5.0부터 LogoutView에서는 POST 방식만 허용 #}
-                {% csrf_token %}
-                <input type="submit" value="logout" />
-            </form>
-            {% endif %}
-        </div>
-        <div style="text-align: right">
-            <form class="d-flex" action="{% url 'searchapp:api_search' %}" method="GET">
-                {% csrf_token %}
-                <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">🔍</button>
-            </form>
-        </div>
+<div class="header-hidden">
+    <div style="text-align: center">
+        <h1>SwuLog</h1>
     </div>
+    <div style="text-align: center">
+        {% if not user.is_authenticated %}
+        <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+            <span>login</span>
+        </a>
+        {% else %}
+        <form action="{% url 'accountapp:logout' %}?next={{ request.path }}" method="post" class="swulog_header_nav"> {# 장고 5.0부터 LogoutView에서는 POST 방식만 허용 #}
+            {% csrf_token %}
+            <input type="submit" value="logout" />
+        </form>
+        {% endif %}
+    </div>
+    <div style="text-align: right">
+        <form class="d-flex" action="{% url 'searchapp:api_search' %}" method="GET">
+            {% csrf_token %}
+            <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">🔍</button>
+        </form>
+    </div>
+</div>

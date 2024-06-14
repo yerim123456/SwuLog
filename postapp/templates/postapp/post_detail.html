@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-<a href="{% url 'postapp:post_update' post_id=post.id %}">수정하기</a>
-<a href="{% url 'postapp:post_list' %}">뒤로 가기</a>
-<br>
-<h1>{{ post.title }}</h1>
-<p>작성자: {{ post.author }}</p>
-<p>내용: {{ post.text }}</p>
-<p>정렬: {{ post.alignment }}</p>
-<p>폰트: {{ post.font }}</p>
-<p>작성일: {{ post.created_at }}</p>
-{% for photo in post.photos.all %}
-    <img src="{{ photo.image.url }}" alt="Photo">
-{% endfor %}
-
+<div class="post-detail-container">
+    <header class="post-detail-header">
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">
+            <p>{{ post.author.username }}</p>
+            <p>{{ post.created_at|date:"Y-m-d H:i" }}</p>
+        </div>
+        <div class="post-actions">
+            <a href="{% url 'postapp:post_update' post_id=post.id %}" class="btn">수정하기</a>
+            <a href="{% url 'postapp:post_list' %}" class="btn">뒤로 가기</a>
+        </div>
+    </header>
+    <div class="post-content">
+        <p>{{ post.text }}</p>
+        {% for photo in post.photos.all %}
+            <img src="{{ photo.image.url }}" alt="Photo" class="post-photo">
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

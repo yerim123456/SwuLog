@@ -1,20 +1,64 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}이웃새글{% endblock %}
 
 {% block content %}
-<h1>Post List</h1>
-<a href="{% url 'postapp:post_create' %}" class="btn btn-primary">작성하기</a>
-<ul>
-    {% for post in posts %}
-    <li>
-        <h2><a href="{% url 'postapp:post_detail' post_id=post.id %}">{{ post.title }}</a></h2>
-        <p>작성자: {{ post.author }}</p>
-        <p>작성일: {{ post.created_at|timesince }} 전</p>
-        {% if post.photos.exists %}
-            <img src="{{ post.photos.first.image.url }}" alt="First Photo">
-        {% else %}
-            <p>사진 없음</p>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
+<div class="posts-container">
+    <header class="posts-header">
+        <h1>이웃새글</h1>
+        <div class="header-icons">
+            <img src="{% static 'css/icons/search-icon.png' %}" alt="검색 아이콘">
+            <img src="{% static 'css/icons/menu-icon.png' %}" alt="메뉴 아이콘">
+        </div>
+    </header>
+    <div class="post-list">
+        {% for post in posts %}
+        <a href="{% url 'postapp:post_detail' post.id %}" class="post-item-link">
+            <div class="post-item">
+                {% if post.photos.first %}
+                <img src="{{ post.photos.first.image.url }}" alt="게시물 이미지" class="post-image">
+                {% else %}
+                <img src="{% static 'css/images/default-thumbnail.jpg' %}" alt="기본 이미지" class="post-image">
+                {% endif %}
+                <div class="post-content">
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-meta">{{ post.author }} {{ post.created_at|timesince }} 전</p>
+                    <div class="post-interactions">
+                        <img src="{% static 'css/icons/like-icon.png' %}" alt="Like icon" class="like-icon" id="like-icon-{{ post.id }}">
+                        <span class="post-likes" id="like-count-{{ post.id }}">{{ post.like_count }}</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="bottom-bar">
+        <div class="floating-button" id="floatingButton">
+            <img src="{% static 'css/icons/x-icon.png' %}" alt="닫기 아이콘">
+        </div>
+        <div class="popup" id="popup">
+            <a href="{% url 'postapp:post_create' %}" class="popup-link">
+                <img src="{% static 'css/icons/writing-icon.png' %}" alt="글쓰기 아이콘">
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var floatingButton = document.getElementById('floatingButton');
+        var popup = document.getElementById('popup');
+
+        popup.style.display = 'none';
+
+        floatingButton.addEventListener('click', function() {
+            if (popup.style.display === 'none') {
+                popup.style.display = 'block';
+            } else {
+                popup.style.display = 'none';
+            }
+        });
+    });
+</script>
 {% endblock %}
