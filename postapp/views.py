@@ -33,7 +33,7 @@ def post_detail(request, post_id):
 
 
 def post_list(request):
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all()
     return render(request, 'postapp/post_list.html', {'posts': posts})
 
 

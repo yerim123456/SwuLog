@@ -1,37 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if post.author == request.user %}
-    <a href="{% url 'postapp:post_delete' post_id=post.id %}">삭제하기</a>
-    <a href="{% url 'postapp:post_update' post_id=post.id %}">수정하기</a>
-{% endif %}
-<a href="{% url 'postapp:post_list' %}">뒤로 가기</a>
-<br>
-<h1>{{ post.title }}</h1>
-<p>작성자: {{ post.author }}</p>
-<p>내용: {{ post.text }}</p>
-<p>정렬: {{ post.alignment }}</p>
-<p>폰트: {{ post.font }}</p>
-<p>작성일: {{ post.created_at }}</p>
-<p>좋아요 수: {{ post.like_count }}</p>
-
-{% if user.is_authenticated %}
+<div class="post-detail-container">
+    <header class="post-detail-header">
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">
+            <p>{{ post.author.username }}</p>
+            <p>{{ post.created_at|date:"Y-m-d H:i" }}</p>
+        </div>
+        <div class="post-actions">
+            <a href="{% url 'postapp:post_list' %}" class="btn">뒤로 가기</a>
+            {% if post.author == request.user %}
+                <a href="{% url 'postapp:post_update' post_id=post.id %}" class="btn">수정하기</a>
+                <form action="{% url 'postapp:post_delete' post_id=post.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">삭제하기</button>
+                </form>
+            {% endif %}
+            
+            {% if user.is_authenticated %}
     <form action="{% url 'postapp:toggle_like' post_id=post.id %}" method="post">
         {% csrf_token %}
-        <button type="submit">
             {% if is_liked %}
-                좋아요 취소
+            <button type="submit" class="btn">좋아요 취소</button>
             {% else %}
-                좋아요
+            <button type="submit" class="btn">좋아요</button>
             {% endif %}
-        </button>
     </form>
 {% else %}
     <p>좋아요를 표시하려면 <a href="{% url 'accountapp:login' %}?next={{ request.path }}">로그인</a>하세요.</p>
 {% endif %}
-
-{% for photo in post.photos.all %}
-<img src="{{ photo.image.url }}" alt="Photo">
-{% endfor %}
-
+        </div>
+    </header>
+    <div class="post-content">
+        <p>{{ post.text }}</p>
+        {% for photo in post.photos.all %}
+            <img src="{{ photo.image.url }}" alt="Photo" class="post-photo">
+        {% endfor %}
+    </div>
+    
+</div>
 {% endblock %}

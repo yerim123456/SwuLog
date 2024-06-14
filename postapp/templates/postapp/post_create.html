@@ -1,20 +1,133 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+<div class="post-create-container">
+    <header class="post-create-header">
+        <a href="{% url 'postapp:post_list' %}" class="back-button">뒤로 가기</a>
+        <button type="button" class="submit-button" id="submitButton">등록</button>
+    </header>
+    <form id="postForm" method="post" enctype="multipart/form-data" autocomplete="on">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="title" id="title" class="title-input" placeholder="제목" required>
+        </div>
+        <div class="input-group">
+            <textarea name="text" id="text" placeholder="본문에 #을 이용해 태그를 입력해보세요! (최대 30개)" rows="10" required></textarea>
+        </div>
+        <div class="input-group" id="alignment-group" style="display: none;">
+            <select name="alignment" id="alignment" required>
+                <option value="" disabled selected>정렬 선택</option>
+                <option value="left">Left Align</option>
+                <option value="center">Center Align</option>
+                <option value="right">Right Align</option>
+            </select>
+        </div>
+        <div class="input-group" id="font-group" style="display: none;">
+            <select name="font" id="font" required>
+                <option value="" disabled selected>폰트 선택</option>
+                <option value="system">시스템 폰트</option>
+                <option value="nanum_gothic">나눔고딕</option>
+                <option value="nanum_myungjo">나눔명조</option>
+                <option value="barun_gothic">바른고딕</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <input type="file" name="photos" id="photos" multiple style="display: none;">
+        </div>
+    </form>
+    <div class="bottom-toolbar">
+        <button type="button" class="toolbar-button" id="cameraButton"><img src="{% static 'css/icons/camera-icon.png' %}" alt="카메라 아이콘"></button>
+        <button type="button" class="toolbar-button" id="fontButton"><img src="{% static 'css/icons/text-icon.png' %}" alt="텍스트 아이콘"></button>
+        <button type="button" class="toolbar-button" id="alignmentButton"><img src="{% static 'css/icons/lineup-icon.png' %}" alt="리스트 아이콘"></button>
+        <button type="button" class="toolbar-button"><img src="{% static 'css/icons/smile-icon.png' %}" alt="스마일 아이콘"></button>
+        <button type="button" class="toolbar-button">저장</button>
+    </div>
+</div>
 
-<a href="{% url 'postapp:post_list' %}">뒤로 가기</a>
+<style>
+    .post-create-container {
+        width: 390px;
+        height: 844px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .post-create-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 20px 10px 20px;
+    }
+    
+    .input-group {
+        padding: 20px;
+    }
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="file" name="photos" multiple>
-    <button type="submit">Submit</button>
-</form>
+    .title-input {
+        font-size: 30px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: none; /* 아래 테두리 제거 */
+
+    }
+
+    .bottom-toolbar {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        outline: none;
+    }
+    
+    .toolbar-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .toolbar-button img {
+        width: 24px;
+        height: 24px;
+    }
+
+</style>
 
 <script>
-    // Submit 버튼 클릭 시 폼 초기화
+    // Submit 버튼 클릭 시 폼 제출 및 초기화
     document.getElementById('submitButton').addEventListener('click', function() {
+        document.getElementById('postForm').submit();
         document.getElementById('postForm').reset();
+    });
+
+    // 카메라 버튼 클릭 시 파일 선택 창 열기
+    document.getElementById('cameraButton').addEventListener('click', function() {
+        document.getElementById('photos').click();
+    });
+
+    // 폰트 버튼 클릭 시 폰트 선택 드롭다운 표시/숨기기
+    document.getElementById('fontButton').addEventListener('click', function() {
+        var fontGroup = document.getElementById('font-group');
+        if (fontGroup.style.display === 'none' || fontGroup.style.display === '') {
+            fontGroup.style.display = 'block';
+        } else {
+            fontGroup.style.display = 'none';
+        }
+    });
+
+    // 정렬 버튼 클릭 시 정렬 선택 드롭다운 표시/숨기기
+    document.getElementById('alignmentButton').addEventListener('click', function() {
+        var alignmentGroup = document.getElementById('alignment-group');
+        if (alignmentGroup.style.display === 'none' || alignmentGroup.style.display === '') {
+            alignmentGroup.style.display = 'block';
+        } else {
+            alignmentGroup.style.display = 'none';
+        }
     });
 </script>
 {% endblock %}
+
+

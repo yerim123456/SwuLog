@@ -153,4 +153,4 @@ NAVER_CLIENT_ID = 'F_5iZp6rVY8JNiYXrH6b'
 NAVER_CLIENT_SECRET = 'XxIFKyivgk'
 
 # login 경로 지정
-LOGIN_URL = '/account/login/'
+LOGIN_URL = 'accountapp:login'  # 로그인 페이지 URL

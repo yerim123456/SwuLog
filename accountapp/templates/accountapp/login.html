@@ -1,17 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}로그인{% endblock %}
 
 {% block content %}
+<div class="login-container">
+    <h1>SWU_BLOG</h1>
+    <p>등록된 아이디로 간편하게 로그인하세요.</p>
+    <form method="post" action="{% url 'accountapp:login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'postapp:post_list' %}">
+        <div class="input-group">
+            <label for="username">
+                <img src="{% static 'css/icons/user-icon.png' %}" alt="아이디 아이콘">
+            </label>
+            <input type="text" id="username" name="username" placeholder="아이디" required>
+        </div>
+        <div class="input-group">
+            <label for="password">
+                <img src="{% static 'css/icons/lock-icon.png' %}" alt="비밀번호 아이콘">
+            </label>
+            <input type="password" id="password" name="password" placeholder="비밀번호" required>
+            <button type="button" class="toggle-password">
+                <img src="{% static 'css/icons/eye-icon.png' %}" alt="비밀번호 보기">
+            </button>
+        </div>
+        <button type="submit" class="login-button">로그인</button>
+    </form>
+    <a href="{% url 'accountapp:signup' %}" class="register-link">새로운 아이디를 만들어 보세요 &rarr;</a>
+</div>
 
-    <div style="text-align: center; max-width: 500px; margin: 4rem auto">
-        <div>
-            <h4>Login</h4>
-        </div>
-        <div>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" class="btn btn-primary">
-            </form>
-        </div>
-    </div>
+<script>
+    document.querySelector('.toggle-password').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+    });
+</script>
+
 {% endblock %}
