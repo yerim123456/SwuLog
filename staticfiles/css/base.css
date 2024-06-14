@@ -1,7 +1,7 @@
 /* 기본 스타일 */
 body {
-    width: 390px;
-    height: 844px;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -510,7 +510,6 @@ footer {
 
 .post-content {
     flex: 1;
-    margin-left: 20px;
 }
 
 .post-title {
@@ -660,7 +659,8 @@ footer {
 
 /* 포스트 상세 스타일 */
 .post-detail-container {
-    width: 390px;
+    width: 100%;
+    max-width: 390px;
     height: 844px;
     margin: 0 auto;
     padding: 20px;
@@ -674,18 +674,19 @@ footer {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    color: black;
 }
 
 .post-detail-header h1 {
     margin: 0;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 400;
+    color: black;
 }
 
-.post-meta {
+.post-detail-post-meta {
     font-size: 14px;
     color: #888;
+    text-align: center;
 }
 
 .post-actions {
@@ -698,20 +699,22 @@ footer {
 .post-actions .btn {
     display: inline-block;
     padding: 10px 20px;
-    border: 1px solid #007BFF;
+    border: 1px solid #A53134;
     border-radius: 5px;
-    color: #007BFF;
+    color: #A53134;
     background-color: #fff;
     transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .post-actions .btn:hover {
-    background-color: #007BFF;
+    background-color: #A53134;
     color: #fff;
 }
 
-.post-content {
-    text-align: left;
+.post-content-detail {
+    text-align: center;
     font-size: 16px;
     line-height: 1.6;
 }

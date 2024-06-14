@@ -7,8 +7,9 @@
 <div class="login-container">
     <h1>SWU_BLOG</h1>
     <p>등록된 아이디로 간편하게 로그인하세요.</p>
-    <form method="post">
+    <form method="post" action="{% url 'accountapp:login' %}">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'postapp:post_list' %}">
         <div class="input-group">
             <label for="username">
                 <img src="{% static 'css/icons/user-icon.png' %}" alt="아이디 아이콘">

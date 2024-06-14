@@ -699,15 +699,17 @@ footer {
 .post-actions .btn {
     display: inline-block;
     padding: 10px 20px;
-    border: 1px solid #007BFF;
+    border: 1px solid #A53134;
     border-radius: 5px;
-    color: #007BFF;
+    color: #A53134;
     background-color: #fff;
     transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .post-actions .btn:hover {
-    background-color: #007BFF;
+    background-color: #A53134;
     color: #fff;
 }
 
