@@ -151,3 +151,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 NAVER_CLIENT_ID = 'F_5iZp6rVY8JNiYXrH6b'
 NAVER_CLIENT_SECRET = 'XxIFKyivgk'
+
+# login 경로 지정
+LOGIN_URL = '/account/login/'
