@@ -510,7 +510,6 @@ footer {
 
 .post-content {
     flex: 1;
-    margin-left: 20px;
 }
 
 .post-title {
@@ -660,7 +659,8 @@ footer {
 
 /* 포스트 상세 스타일 */
 .post-detail-container {
-    width: 390px;
+    width: 100%;
+    max-width: 390px;
     height: 844px;
     margin: 0 auto;
     padding: 20px;
@@ -683,7 +683,7 @@ footer {
     color: black;
 }
 
-.post-meta {
+.post-detail-post-meta {
     font-size: 14px;
     color: #888;
     text-align: center;
@@ -711,7 +711,7 @@ footer {
     color: #fff;
 }
 
-.post-content {
+.post-content-detail {
     text-align: center;
     font-size: 16px;
     line-height: 1.6;

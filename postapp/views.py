@@ -10,14 +10,14 @@ from .models import Post, Photo
 # @login_required
 def post_create(request):
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
             for file in request.FILES.getlist('photos'):
                 post.photos.create(image=file)
-            return redirect(reverse('postapp:post_detail', kwargs={'post_id': post.id}))
+        return redirect(reverse('postapp:post_detail', kwargs={'post_id': post.id}))
     else:
         form = PostForm()
     return render(request, 'postapp/post_create.html', {'form': form})
@@ -29,7 +29,7 @@ def post_detail(request, post_id):
 
 
 def post_list(request):
-    posts = Post.objects.all().order_by('-created_at')  # 최신 글 순으로 정렬
+    posts = Post.objects.all()
     return render(request, 'postapp/post_list.html', {'posts': posts})
 
 
