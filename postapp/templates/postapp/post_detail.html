@@ -9,6 +9,7 @@
             <p>{{ post.created_at|date:"Y-m-d H:i" }}</p>
         </div>
         <div class="post-actions">
+            <a href="{% url 'postapp:post_list' %}" class="btn">뒤로 가기</a>
             {% if post.author == request.user %}
                 <a href="{% url 'postapp:post_update' post_id=post.id %}" class="btn">수정하기</a>
                 <form action="{% url 'postapp:post_delete' post_id=post.id %}" method="post" style="display:inline;">
@@ -16,7 +17,19 @@
                     <button type="submit" class="btn">삭제하기</button>
                 </form>
             {% endif %}
-            <a href="{% url 'postapp:post_list' %}" class="btn">뒤로 가기</a>
+            
+            {% if user.is_authenticated %}
+    <form action="{% url 'postapp:toggle_like' post_id=post.id %}" method="post">
+        {% csrf_token %}
+            {% if is_liked %}
+            <button type="submit" class="btn">좋아요 취소</button>
+            {% else %}
+            <button type="submit" class="btn">좋아요</button>
+            {% endif %}
+    </form>
+{% else %}
+    <p>좋아요를 표시하려면 <a href="{% url 'accountapp:login' %}?next={{ request.path }}">로그인</a>하세요.</p>
+{% endif %}
         </div>
     </header>
     <div class="post-content">
@@ -25,5 +38,6 @@
             <img src="{{ photo.image.url }}" alt="Photo" class="post-photo">
         {% endfor %}
     </div>
+    
 </div>
 {% endblock %}
